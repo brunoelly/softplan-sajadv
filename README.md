@@ -9,10 +9,10 @@ Tecnologias utilizadas:
 
 Para executar a aplicação:
 
-1. executar o Back-End:
+1. executar o Back-End na pasta raiz com o comando abaixo ou no eclipse:
 mvn spring-boot:run
 
-2. executar o Front-End:
+2. executar o Front-End na pasta raiz:
 npm start
 
 Backlog:
