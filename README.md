@@ -1,12 +1,11 @@
 # Desafio Técnico Softplan
 
 Tecnologias utilizadas:
-  Java 11
-  Springboot
-  Postgresql
-  Angular 10
-  Swagger
-  Heroku
+  .Java 11
+  .Springboot
+  .Postgresql
+  .Angular 10
+  .Swagger
 
 Para executar a aplicação:
 
@@ -18,8 +17,9 @@ npm start
 
 Backlog:
 
-Exibir contatos inativos
-Excluir contatos inativos
-Salvar avatar em base64
-Implementar camada de segurança com hashing (salt)
-Validações adicionais
+  .Exibir contatos inativos
+  .Excluir contatos inativos
+  .Salvar avatar em base64
+  .Implementar camada de segurança com hashing (salt)
+  .Validações adicionais
+  .Deploy Heroku
