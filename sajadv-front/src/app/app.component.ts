@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
 
 
   public enviarDados(): void {
-    
+
     this.usuarioService.salvarUsuario(this.usuario).subscribe(f => {
 
       this.toastr.success("Usuário Salvo com sucesso", "Usuário");
@@ -117,16 +117,16 @@ export class AppComponent implements OnInit {
 
   public pesquisar(): void{
 
-    const date = (this.dtnasc.value != null && this.dtnasc.value !== undefined) ? moment(this.dtnasc.value) : null 
+    const date = (this.dtnasc.value != null && this.dtnasc.value !== undefined) ? moment(this.dtnasc.value) : null
 
     const request = {
     "nome" : this.nome.value,
     "cpf" : (this.cpf.value !== null && this.cpf.value !== undefined) ?  this.cpf.value.split('.').join('').replace('-', '') : null,
     "email" : this.email.value,
     "dtnasc" : (date != null && date !== undefined) ? date.format('DD.MM.yyyy') : null
-    
+
   }
-    
+
     let req = removerCamposVaziosDoRequest(request);
     this.usuarioService.queryUsuario(req).subscribe(f => {
 
@@ -154,5 +154,5 @@ export class AppComponent implements OnInit {
   get dtnasc() {
     return this.usuarioform.get('dtnasc');
   }
-  
+
 }

@@ -2,37 +2,40 @@ package com.softplan.sajadv.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.google.common.base.Predicate;
-
-import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-import static springfox.documentation.builders.PathSelectors.regex;
-import static com.google.common.base.Predicates.or;
+import springfox.documentation.builders.PathSelectors;
+import java.util.Collections;
+
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 
-	@Bean
-	public Docket postsApi() {
-		return new Docket(DocumentationType.SWAGGER_2).groupName("public-api")
-				.apiInfo(apiInfo()).select().paths(postPaths()).build();
-	}
+    @Bean
+    public Docket apiDocket() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.softplan.sajadv"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(apiInfo());
+    }
 
-	private Predicate<String> postPaths() {
-		return or(regex("/usuario.*"));
-	}
-
-	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("JavaInUse API")
-				.description("JavaInUse API reference for developers")
-				.termsOfServiceUrl("http://javainuse.com")
-				.contact("javainuse@gmail.com").license("JavaInUse License")
-				.licenseUrl("javainuse@gmail.com").version("1.0").build();
-	}
-
+    private ApiInfo apiInfo() {
+        return new ApiInfo(
+                "JavaInUse API",
+                "JavaInUse API reference for developers",
+                "1.0",
+                "http://javainuse.com",
+                new Contact("JavaInUse", "www.javainuse.com", "javainuse@gmail.com"),
+                "JavaInUse License",
+                "javainuse@gmail.com",
+                Collections.emptyList()
+        );
+    }
 }
