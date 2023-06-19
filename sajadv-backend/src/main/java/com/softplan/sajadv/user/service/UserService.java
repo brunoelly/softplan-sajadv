@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.softplan.sajadv.user.exception.UserNotFoundException;
-import com.softplan.sajadv.user.exception.CpfCadastroException;
+import com.softplan.sajadv.user.exception.CPFRegistrationException;
 import com.softplan.sajadv.user.repository.UserRepository;
 
 @Service
@@ -25,17 +25,20 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 
+	public Optional<User> findUserByCpf(String cpf) {
+		return userRepository.findByCpf(cpf);
+	}
+
 	public User save(User user) {
 		
 		if (user.getId() == null) {
-
-			Optional<User> findByCpf = Optional.ofNullable(this.userRepository.findByCpf(user.getCpf()).orElseThrow(() -> new UserNotFoundException(user.getId())));
+			Optional<User> findByCpf = Optional.ofNullable(this.userRepository.findByCpf(user.getCpf())
+					.orElseThrow(() -> new UserNotFoundException(user.getId())));
 
 			if (findByCpf.isPresent()) {
-				throw new CpfCadastroException("Cpf já cadastrado na base");
+				throw new CPFRegistrationException("Cpf já cadastrado na base");
 			}
 		}
-
 		return userRepository.save(user);
 	}
 

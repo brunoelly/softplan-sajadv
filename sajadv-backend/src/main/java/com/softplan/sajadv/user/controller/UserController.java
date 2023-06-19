@@ -1,6 +1,7 @@
 package com.softplan.sajadv.user.controller;
 
 import com.softplan.sajadv.assembler.UserModelAssembler;
+import com.softplan.sajadv.user.exception.CPFRegistrationException;
 import com.softplan.sajadv.user.exception.UserNotFoundException;
 import com.softplan.sajadv.user.model.User;
 import com.softplan.sajadv.user.service.UserService;
@@ -36,6 +37,15 @@ public class UserController {
 
 		User user = this.userService.findUserById(id)
 				.orElseThrow(() -> new UserNotFoundException(id));
+
+		return assembler.toModel(user);
+	}
+
+	@GetMapping("/users/cpf/{cpf}")
+	public EntityModel<User> one(@PathVariable String cpf) {
+
+		User user = this.userService.findUserByCpf(cpf)
+				.orElseThrow(() -> new CPFRegistrationException(cpf));
 
 		return assembler.toModel(user);
 	}

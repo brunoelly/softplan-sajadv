@@ -1,9 +1,9 @@
 package com.softplan.sajadv.user.exception;
 
-public class CpfCadastroException  extends RuntimeException {
+public class CPFRegistrationException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
-	public CpfCadastroException(String msg) {
+	public CPFRegistrationException(String msg) {
 		super(msg);
 	}
 

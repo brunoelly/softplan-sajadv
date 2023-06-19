@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.softplan.sajadv.user.exception.CpfCadastroException;
+import com.softplan.sajadv.user.exception.CPFRegistrationException;
 
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
@@ -31,8 +31,8 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(violations, headers, status);
 	}
     
-    @ExceptionHandler(CpfCadastroException.class)
-    public ResponseEntity<?> handleConstraintViolationException(HttpServletRequest req, CpfCadastroException e) {
+    @ExceptionHandler(CPFRegistrationException.class)
+    public ResponseEntity<?> handleConstraintViolationException(HttpServletRequest req, CPFRegistrationException e) {
 
     	List<Error> violations = new ArrayList<Error>();
     	violations.add(new Error("cpf", e.getMessage()));
