@@ -1,10 +1,10 @@
 -- src/main/resources/db/migration/V1__create_tables.sql
-CREATE TABLE user (
+CREATE TABLE user_sajadv (
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(150) NOT NULL,
+    name VARCHAR(150) NOT NULL,
     cpf VARCHAR(11) UNIQUE NOT NULL,
-    dtnasc DATE,
+    birthDate DATE,
     email VARCHAR(400) NOT NULL,
-    ativo BOOLEAN,
+    active BOOLEAN,
     avatar BYTEA
 );
