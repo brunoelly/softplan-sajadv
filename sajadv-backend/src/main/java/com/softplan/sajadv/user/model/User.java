@@ -1,7 +1,6 @@
 package com.softplan.sajadv.user.model;
 
 import lombok.Data;
-import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -12,7 +11,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Where(clause = "active = true")
+@Table(name = "user_sajadv")
 @Data
 public class User extends RepresentationModel<User> {
 
@@ -36,9 +35,14 @@ public class User extends RepresentationModel<User> {
 	@Size(max = 400, message = "Email cannot be longer than 400 characters")
 	private String email;
 	
+	@Column(name = "active")
 	private Boolean isActive;
 
 	@Lob
 	private byte[] avatar;
+
+    public User orElseThrow(Object object) {
+        return null;
+    }
 
 }
