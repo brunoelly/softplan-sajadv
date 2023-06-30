@@ -1,8 +1,9 @@
-package com.softplan.sajadv.user.model;
+package com.softplan.sajadv.user.entity;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.hateoas.RepresentationModel;
+
+import com.softplan.sajadv.Address.entity.Address;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -13,12 +14,12 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "user_sajadv")
 @Data
-public class User extends RepresentationModel<User> {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@NotBlank(message = "Name is mandatory")
 	@Size(max = 150, message = "Name cannot be longer than 150 characters")
 	private String name;
@@ -29,20 +30,18 @@ public class User extends RepresentationModel<User> {
 
 	@DateTimeFormat(pattern = "dd.MM.yyyy")
 	private LocalDate birthDate;
-	
+
 	@Email
 	@NotBlank(message = "E-mail is mandatory")
 	@Size(max = 400, message = "Email cannot be longer than 400 characters")
 	private String email;
-	
+
 	@Column(name = "active")
 	private Boolean isActive;
 
 	@Lob
 	private byte[] avatar;
 
-    public User orElseThrow(Object object) {
-        return null;
-    }
-
+	@NotBlank(message = "Address is mandatory")
+	private Address address;
 }

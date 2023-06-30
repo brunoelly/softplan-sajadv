@@ -3,10 +3,9 @@ package com.softplan.sajadv.user.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.softplan.sajadv.user.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.softplan.sajadv.user.entity.User;
 import com.softplan.sajadv.user.exception.UserNotFoundException;
 import com.softplan.sajadv.user.repository.UserRepository;
 

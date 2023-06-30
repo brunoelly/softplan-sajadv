@@ -1,9 +1,9 @@
 package com.softplan.sajadv.user.controller;
 
+import com.softplan.sajadv.user.entity.User;
 import com.softplan.sajadv.user.exception.CPFRegistrationException;
 import com.softplan.sajadv.user.exception.UserNotCreatedException;
 import com.softplan.sajadv.user.exception.UserNotFoundException;
-import com.softplan.sajadv.user.model.User;
 import com.softplan.sajadv.user.service.UserService;
 
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
